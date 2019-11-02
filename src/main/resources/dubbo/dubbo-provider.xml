@@ -25,6 +25,11 @@
     <!--分组隔离-->
     <dubbo:service interface="com.example.core.facade.DubboFacade" ref="fakeDubboFacade" version="0.0.1" group="fake"/>
 
+    <dubbo:service interface="com.example.core.facade.CallbackFacade" ref="callbackFacade" connections="1" callbacks="1000">
+        <dubbo:method name="addListener">
+            <dubbo:argument index="1" callback="true"/>
+        </dubbo:method>
+    </dubbo:service>
     <!--泛化服务-->
     <!--<dubbo:service interface="com.alibaba.dubbo.rpc.service.GenericService" ref="genericService"/>-->
     <!--提供服务的bean-->
@@ -34,4 +39,5 @@
 
     <bean name="genericService" class="com.example.core.facade.impl.CoreGenericFacadeImpl"/>
 
+    <bean name="callbackFacade" class="com.example.core.facade.impl.CallbackFacadeImpl" />
 </beans>
