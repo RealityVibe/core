@@ -65,7 +65,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+                <!--加了这行后，打包放到maven仓库的为可依赖的jar包-->
+                <configuration> <classifier>exec</classifier> </configuration>
+        </plugin>
         </plugins>
     </build>
 
